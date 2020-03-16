@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1.date.getTime
+    // 表示1970年1月1日00:00:00 UTC与指定日期之间经过时间差的毫秒数字。
+    var birthday = new Date(1994, 12, 10);
+    var copy = new Date();
+    console.log(birthday.getTime())
+    copy.setTime(birthday.getTime());
+    console.log(copy)
+
+    // 2.Date.now
+    // 方法返回从1970年1月1日00:00:00 UTC开始经过的毫秒数。
+    console.log(Date.now())
+
+    // 3.Date.parse
+    // 解析一个表示某个日期的字符串，并返回从1970-1-1 00:00:00 UTC 到该日期对象（该日期对象的UTC时间）的毫秒数
+    var IPOdate = new Date();
+    IPOdate.setTime(Date.parse('Aug 9, 1995'));
+    console.log(IPOdate)
+
+    // 4.date.toJSON
+    // 给定日期的字符串表示形式。
+    var jsonDate = (new Date()).toJSON();
+    console.log(jsonDate);
+</script>
+</html>
