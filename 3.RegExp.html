@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 1.regExp.exec
+    // exec()方法在一个指定字符串中执行一个搜索匹配。返回一个结果数组或null
+    var re = /quick\s(brown).+?(jumps)/ig;
+    var result = re.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
+    console.log(result)
+    // {
+    //     0: "Quick Brown Fox Jumps"
+    //     1: "Brown"
+    //     2: "Jumps"
+    //     index: 4 // The 0-based index of the match in the string.
+    //     input: "The Quick Brown Fox Jumps Over The Lazy Dog"
+    //     groups: undefined
+    //     length: 3
+    // }
+
+    // 2.支持正则表达式的 String 对象的方法
+    // 2-1.search() 方法 
+    // stringObject 中第一个与 regexp 相匹配的子串的起始位置。如果没有找到任何匹配的子串，则返回 -1。
+    // var str="Visit W3School!";
+    // console.log(str.search(/W3School/));
+
+    // 2-2.match() 方法
+    // match() 方法可在字符串内检索指定的值，或找到一个或多个正则表达式的匹配 它返回指定的值
+    var str="Hello world!";
+    console.log(str.match("world"));
+
+    var str2="1 plus 2 equal 3";
+    console.log(str2.match(/\d+/g));
+
+    // 2-3.replace() 方法
+    // replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
+    // 返回值
+    // 一个新的字符串，是用 replacement 替换了 regexp 的第一次匹配或所有匹配之后得到的。
+    // replacement 中的 $ 字符具有特定的含义
+    // $1、$2、...、$99 与 regexp 中的第 1 到第 99 个子表达式相匹配的文本。
+
+    var str="Visit Microsoft!"
+    console.log(str.replace(/Microsoft/, "W3School"))
+
+    var name = "Doe, John";
+    console.log(name.replace(/(\w+)\s*, \s*(\w+)/, "$2 $1"));
+
+    var name = 'aaa bbb ccc';
+    uw = name.replace(/\b\w+\b/g, function(word){
+        return word.substring(0,1).toUpperCase()+word.substring(1);}
+    );
+    console.log(uw) // Aaa Bbb Ccc
+
+    // 3.split() 方法
+    // split() 方法用于把一个字符串分割成字符串数组。
+
+    var str="How are you doing today?"
+    console.log(str.split(" ",3))
+    
+    var sentence = 'h e l l o';
+    var words = sentence.split(/\s+/)
+    var words2 = sentence.split(/\s+/, 3)
+    console.log(words, words2)
+</script>
+</html>
