@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Array简介
+    // 从一个索引位置删除多个元素
+    var vegetables = ['Cabbage', 'Turnip', 'Radish', 'Carrot'];
+    console.log(vegetables);
+    // ["Cabbage", "Turnip", "Radish", "Carrot"]
+
+    var pos = 1, n = 2;
+
+    var removedItems = vegetables.splice(pos, n);
+    // this is how to remove items, n defines the number of items to be removed,
+    // from that position(pos) onward to the end of array.
+
+    console.log(vegetables);
+    // ["Cabbage", "Carrot"] (the original array is changed)
+
+    console.log(removedItems);
+    // ["Turnip", "Radish"]
+
+    // 复制一个数组
+    var fruits = [1, 2, 3];
+    var shallowCopy = fruits.slice();
+    fruits.push(5)
+    console.log(fruits, shallowCopy)
+    // [1, 2, 3, 5]  [1, 2, 3]
+
+    // 1.array.pop
+    // pop()方法从数组中删除最后一个元素，并返回该元素的值。此方法更改数组的长度。
+    var a = [1, 2, 3];
+    console.log(a.pop()); // 3
+
+    console.log(a); // [1, 2]
+
+    // 2.array.push
+    // push() 方法将一个或多个元素添加到数组的末尾，并返回新数组的长度。
+    var numbers = [1, 2, 3];
+    console.log(numbers.push(8)); // 4
+
+    console.log(numbers); // [1, 2, 3, 8]
+
+    // 3.array.slice
+    // slice() 方法返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象。原始数组不会被修改。
+
+    var a = ['zero', 'one', 'two', 'three'];
+    var sliced = a.slice(1, 3);
+
+    console.log(a); // ['zero', 'one', 'two', 'three']
+    console.log(sliced); // ['one', 'two']
+
+    // 4.shift()方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。
+    var a = [1, 2, 3];
+    var b = a.shift();
+
+    console.log(a); // [2, 3]
+    console.log(b); // 1
+
+    // 5.array.unshift
+    // unshift()方法将一个或多个元素添加到数组的开头，并返回新数组的长度。
+    var a = [1, 2, 3];
+    console.log(a.unshift(4, 5)); // 5
+
+    console.log(a); // [4, 5, 1, 2, 3]
+    // 总结，对于新增的操作，返回的值都是新数组长度；对于删除的操作，返回的值都是操作的值
+</script>
+</html>
