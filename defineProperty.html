@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    
+</style>
+<body>
+    
+</body>
+<script>
+    'use strict'
+    // Object.defineProperty 定义的属性默认enumerable 为false，不可枚举
+    // 默认writable 为false,不能被赋值运算符改变
+    // 默认configurable 为false,该属性不能从对应的对象上被删除
+   const obj = {
+       age: 12
+   };
+   Object.defineProperty(obj, 'name', {
+       value: 'kk',
+       writable: true,
+       enumerable: true,
+       configurable: true
+   });
+   obj.name = 'ses';
+   const result = Object.keys(obj);
+   delete obj.name;
+   console.log(result) //["age", "name"]
+   console.log(obj)
+
+    // 为保留默认值 通过 Object.create(null) 将 __proto__ 属性指向 null
+   const obj2 = {};
+   let descriptor = Object.create(null);
+   descriptor.value = 'static';
+   console.log(descriptor)
+   Object.defineProperty(obj2, 'key', descriptor);
+   console.log(obj2)
+
+    //    上面的这个操作等同于
+    // 显示操作
+    // Object.defineProperty(obj, "key", {
+    //     enumerable: false,
+    //     configurable: false,
+    //     writable: false,
+    //     value: "static"
+    // });
+
+    // Enumerable 属性
+    let o = {};
+    Object.defineProperty(o, 'a', {
+        value: 1,
+        enumerable: true
+    });
+    Object.defineProperty(o, 'b', {
+        value: 2,
+        enumerable: false
+    });
+    Object.defineProperty(o, 'c', {
+        value: 3
+    });
+    o.d = 4;
+    console.log(o.propertyIsEnumerable('a')) //true
+    console.log(o.propertyIsEnumerable('b')) //false
+    console.log(o.propertyIsEnumerable('c')) //false
+    console.log(o.propertyIsEnumerable('d')) //true
+
+    for (let key in o) {
+        console.log('-------------')
+        console.log(key)
+        console.log('-------------')
+    }
+    // logs 'a' and 'd'
+    console.log(Object.keys(o)); //['a', 'd']
+    // 取出参数对象的所有可遍历属性(可枚举)
+    const p = {...o};
+    console.log(p) //{a: 1, d: 4}
+
+    // 自定义setter与getter
+    function Archiver () {
+        var temperature = null;
+        var archive = [];
+
+        Object.defineProperty(this, 'temperature', {
+            get () {
+                console.log('get!');
+                return temperature;
+            },
+            set (newValue) {
+                console.log('set!');
+                temperature = newValue;
+                archive.push({
+                    val: temperature
+                });
+            }
+        });
+        this.getArchive = () => archive;
+    }
+    const arc = new Archiver();
+    arc.temperature = 11;
+    arc.temperature = 13;
+    console.log(arc.getArchive())
+</script>
+
+</html>
