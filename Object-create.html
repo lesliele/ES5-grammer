@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    
+</style>
+<body>
+    
+</body>
+<script>
+    const person = {
+        name: 'leslie',
+        isHuman: false,
+        print() {
+            console.log(`my name is ${this.name}, Am i human ${this.isHuman}`);
+        }
+    }
+    const me = Object.create(person);
+    me.isHuman = true;
+    me.print();
+
+
+    // 使用 Object.create 的 propertyObject参数
+    let o;
+    // 以字面量方式创建的空对象就相当于
+    o = Object.create(Object.prototype);
+    let p = {};
+    console.log(o)
+    console.log(p)
+
+    let c = Object.create(Object.prototype, {
+        // foo会成为所创建对象的数据属性
+        foo: {
+            value: 'hello'
+        },
+        // 可枚举的
+        age: {
+            value: 12,
+            enumerable: true
+        }
+    });
+    console.log(Object.keys(c))
+</script>
+
+</html>
